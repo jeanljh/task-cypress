@@ -1,6 +1,7 @@
 import "@testing-library/cypress/add-commands";
 import uniswap from '../../pageobjects/uniswap'
 
+/** get the swap rate for a selected exchange token pair */
 Cypress.Commands.add('getSwapRate', (tokenFrom, tokenTo, amountFrom) => {
     uniswap.inputAmountFrom().clear().type(amountFrom).should('have.value', amountFrom)
     uniswap.btnTokenInput().invoke('text').then(t => {
@@ -22,6 +23,7 @@ Cypress.Commands.add('getSwapRate', (tokenFrom, tokenTo, amountFrom) => {
     uniswap.inputAmountTo().should('not.have.value', '').and('not.be.NaN')
 })
 
+/** perform token import and check imported token */
 Cypress.Commands.add('importToken', (tokenAddress, tokenSymbol) => {
     uniswap.btnTokenInput().click()
     uniswap.inputTokenSearch().type(tokenAddress)
@@ -31,6 +33,7 @@ Cypress.Commands.add('importToken', (tokenAddress, tokenSymbol) => {
     uniswap.btnTokenInput().should('have.text', tokenSymbol)
 })
 
+/** perform token swap and check etherscan transaction status */
 Cypress.Commands.add('swapToken', () => {
     uniswap.btnSwap().should('be.enabled')
     uniswap.btnSwap().click()

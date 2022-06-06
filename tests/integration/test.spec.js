@@ -26,7 +26,6 @@ describe('Test Suite - Uniswap Features', () => {
             cy.importToken(data.customToken.address, data.customToken.symbol)
         })
     })
-
     context('Network - Rinkeby', () => {
         before(() => {
             cy.getNetwork().then(n => {
