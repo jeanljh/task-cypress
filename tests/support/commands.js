@@ -33,7 +33,7 @@ Cypress.Commands.add('importToken', (tokenAddress, tokenSymbol) => {
     uniswap.btnTokenInput().should('have.text', tokenSymbol)
 })
 
-/** perform token swap and check etherscan transaction status */
+/** perform token swap */
 Cypress.Commands.add('swapToken', () => {
     uniswap.btnSwap().should('be.enabled')
     uniswap.btnSwap().click()
